@@ -15,24 +15,22 @@ function performOperation(operator: string, a: number, b: number) {
 function calc(expression: string) {
     try {
         const operators = ['+', '-', '*', '/']
-        const stack: Array<number> = []
+        const stack: number[] = []
 
         let firstArg
         let secondArg
-
         let brackets = 0
-        let args = 0    
-
+        let args = 0
         let newExpression = expression.split('').reverse()
         // console.log(expression, newExpression)
 
         newExpression.forEach(element => {
             if (element == '(' || element == ')' || element == ' ') {
                 if (element == '(') {
-                    brackets++
+                    brackets--
                 }
                 if (element == ')') {
-                    brackets--
+                    brackets++
                 }
                 return
             }
@@ -56,7 +54,7 @@ function calc(expression: string) {
         })
 
         if (brackets !== 0) throw new Error('Не хватает круглых скобок.')
-        
+
         if (stack.length == 1 && typeof stack[0] == 'number') {
             const result = stack[0] as number
             console.log('Выражение:', expression)

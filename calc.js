@@ -25,10 +25,10 @@ function calc(expression) {
         newExpression.forEach(function (element) {
             if (element == '(' || element == ')' || element == ' ') {
                 if (element == '(') {
-                    brackets_1++;
+                    brackets_1--;
                 }
                 if (element == ')') {
-                    brackets_1--;
+                    brackets_1++;
                 }
                 return;
             }
